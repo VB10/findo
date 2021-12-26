@@ -22,16 +22,28 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  List<String> _samples = ['you', 'need', 'to', 'backend', 'service'];
+  void _fetchSearch(String value) {
+    // It'll be called every 300 seconds
+    _samples.where((element) => element.contains(value));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: FindoField(
+          duration: Duration(seconds: 100),
           onChanged: (value) {
-            print(value);
+            _fetchSearch(value);
           },
         ),
       ),

@@ -1,39 +1,42 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Findo will provide debounce features for your searching operations. While user writing anything in findofield, it doesn't send directly. This field wait to break the users writing.(This component default time 300ms but if you want custom duration, you can declare at the constructor)
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+### Debounce - Cancalable
+
+Moslty using text field for searching but if you use directly TextField with onChange, it'll make more resource using so you can just say how often do you wan to use it then findo returns to result for your time.
+
+```dart
+ FindoField(duration: Duration(seconds: 100), onChanged: .. ),
+```
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+I've used only [async](https://pub.dev/packages/async) package for tihs library.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+void _fetchSearch(String value) {
+    // It'll be called every 300 seconds
+    _samples.where((element) => element.contains(value));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: FindoField(
+          duration: Duration(seconds: 100),
+          onChanged: (value) {
+            _fetchSearch(value);
+          },
+        ),
+      ),
+    );
+  }
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+That's package pretty small but more important solutions. Do you want to add fixes, features or etc., you can always send P.R and i'll lovely to checking.

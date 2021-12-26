@@ -1,8 +1,8 @@
 name: findo
-description: A new Flutter package project.
+description: Simple search field with debounce .
 version: 1.0.0
 author: Veli Bacik <vbacik.10@gmail.com>
-homepage:
+homepage: https://github.com/VB10/findo
 
 environment:
   sdk: ">=2.15.0 <3.0.0"
